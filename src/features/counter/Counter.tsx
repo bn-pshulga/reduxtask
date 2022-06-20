@@ -1,45 +1,33 @@
-import React, { useState } from 'react';
+import React  from 'react';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import {
   decrement,
   increment,
-  // incrementByAmount,
-  // incrementAsync,
-  // incrementIfOdd,
   selectCount,
 } from './counterSlice';
-import styles from './Counter.module.css';
 
 export function Counter() {
   const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
-  const [incrementAmount, setIncrementAmount] = useState('2');
-
-  const incrementValue = Number(incrementAmount) || 0;
 
   return (
-    <div>
-      <div className={styles.row}>
+      <div className={"flex flex-col justify-center items-center"}>
         <button
-          className={styles.button}
+          className={"w-20 full-rounded py-2 px-2 my-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none"}
           aria-label="Decrement value"
           onClick={() => dispatch(decrement())}
         >
-          -
+          -1
         </button>
-        <span className={styles.value}>{count}</span>
+        <span className={"text-lg font-extrabold my-10"}>{count}</span>
         <button
-          className={styles.button}
+            className={"w-20 full-rounded py-2 px-2 my-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none"}
           aria-label="Increment value"
           onClick={() => dispatch(increment())}
         >
-          +
+          +1
         </button>
       </div>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-    </div>
   );
 }
